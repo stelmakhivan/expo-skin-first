@@ -5,15 +5,7 @@ module.exports = {
     {
       files: ['*.js', '*.jsx', '*.ts', '*.tsx'],
       rules: {
-        'prettier/prettier': [
-          'warn',
-          {
-            printWidth: 100,
-            tabWidth: 2,
-            singleQuote: true,
-            bracketSameLine: true,
-          },
-        ],
+        'prettier/prettier': ['warn'],
       },
     },
   ],
