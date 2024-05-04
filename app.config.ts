@@ -60,6 +60,10 @@ const config: ExpoConfig = {
       projectId: 'ec48248d-130e-4508-8556-db27b9d559fd',
     },
   },
+  updates: {
+    url: 'https://u.expo.dev/ec48248d-130e-4508-8556-db27b9d559fd',
+  },
+  runtimeVersion: '1.0.0',
 };
 
 export default config;
