@@ -13,7 +13,7 @@ const config: ExpoConfig = {
   splash: {
     image: './assets/images/splash.png',
     resizeMode: 'contain',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#2260FF',
   },
   assetBundlePatterns: ['**/*'],
   ios: {
@@ -43,7 +43,7 @@ const config: ExpoConfig = {
   android: {
     adaptiveIcon: {
       foregroundImage: './assets/images/adaptive-icon.png',
-      backgroundColor: '#ffffff',
+      backgroundColor: '#2260FF',
     },
     package: 'com.stelmakhivan.skinfirst',
   },
