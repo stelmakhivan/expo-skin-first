@@ -33,3 +33,10 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# ide
+.idea
+.vscode
+
+# tests
+coverage
