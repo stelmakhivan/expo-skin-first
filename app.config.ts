@@ -2,7 +2,21 @@ import 'ts-node/register';
 import { ExpoConfig } from 'expo/config';
 
 const config: ExpoConfig = {
-  plugins: ['expo-router'],
+  plugins: [
+    'expo-router',
+    [
+      'expo-font',
+      {
+        fonts: [
+          'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_100Thin.ttf',
+          'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_300Light.ttf',
+          'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_400Regular.ttf',
+          'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_500Medium.ttf',
+          'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_600SemiBold.ttf',
+        ],
+      },
+    ],
+  ],
   scheme: 'skin-first',
   name: 'Skin First',
   slug: 'skin-first',

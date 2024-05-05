@@ -53,6 +53,14 @@
     <array>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
     </array>
+    <key>UIAppFonts</key>
+    <array>
+      <string>LeagueSpartan_100Thin.ttf</string>
+      <string>LeagueSpartan_300Light.ttf</string>
+      <string>LeagueSpartan_400Regular.ttf</string>
+      <string>LeagueSpartan_500Medium.ttf</string>
+      <string>LeagueSpartan_600SemiBold.ttf</string>
+    </array>
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>
     <key>UIRequiredDeviceCapabilities</key>
