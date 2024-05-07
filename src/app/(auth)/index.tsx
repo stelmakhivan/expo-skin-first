@@ -1,4 +1,5 @@
 import { Image } from 'expo-image';
+import { Link } from 'expo-router';
 import { useMemo } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -28,18 +29,22 @@ const Register = () => {
           </Text>
         </View>
         <View style={footerStyle}>
-          <Button
-            className="w-[207px] p-3 rounded-full self-center justify-center items-center mb-4 active:opacity-80"
-            colorName="primary">
-            <Text className="text-white font-ls-medium text-2xl leading-6">Log In</Text>
-          </Button>
-          <Button
-            className="w-[207px] p-3 rounded-full self-center justify-center items-center active:opacity-80"
-            colorName="secondary">
-            <Text className="font-ls-medium text-2xl leading-6" colorName="primary">
-              Sign Up
-            </Text>
-          </Button>
+          <Link href="/(auth)/login" asChild>
+            <Button
+              className="w-[207px] p-3 rounded-full self-center justify-center items-center mb-4 active:opacity-80"
+              colorName="primary">
+              <Text className="text-white font-ls-medium text-2xl leading-6">Log In</Text>
+            </Button>
+          </Link>
+          <Link href="/(auth)/sign-up" asChild>
+            <Button
+              className="w-[207px] p-3 rounded-full self-center justify-center items-center active:opacity-80"
+              colorName="secondary">
+              <Text className="font-ls-medium text-2xl leading-6" colorName="primary">
+                Sign Up
+              </Text>
+            </Button>
+          </Link>
         </View>
       </ScrollView>
     </SafeAreaView>

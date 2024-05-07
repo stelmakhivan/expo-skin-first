@@ -1,5 +1,7 @@
-const tintColorLight = '#2f95dc';
-const tintColorDark = '#fff';
+const whiteColor = '#ffffff';
+const blackColor = '#000000';
+
+const primaryColor = '#2260FF';
 
 export interface ColorPalette {
   text: string;
@@ -9,6 +11,9 @@ export interface ColorPalette {
   tint: string;
   tabIconDefault: string;
   tabIconSelected: string;
+  statusBar: string;
+  textInputBackground: string;
+  textInputColor: string;
 }
 
 export interface ColorsMap {
@@ -18,22 +23,28 @@ export interface ColorsMap {
 
 const Colors: ColorsMap = {
   light: {
-    text: '#000',
-    primary: '#2260FF',
+    text: blackColor,
+    primary: primaryColor,
     secondary: '#CAD6FF',
-    background: '#fff',
-    tint: tintColorLight,
+    background: whiteColor,
+    tint: primaryColor,
     tabIconDefault: '#ccc',
-    tabIconSelected: tintColorLight,
+    tabIconSelected: primaryColor,
+    statusBar: 'rgba(226, 234, 255, 0.66)',
+    textInputBackground: '#ECF1FF',
+    textInputColor: '#809CFF',
   },
   dark: {
-    text: '#fff',
-    primary: '#2260FF',
+    text: whiteColor,
+    primary: primaryColor,
     secondary: '#CAD6FF',
-    background: '#000',
-    tint: tintColorDark,
+    background: blackColor,
+    tint: whiteColor,
     tabIconDefault: '#ccc',
-    tabIconSelected: tintColorDark,
+    tabIconSelected: whiteColor,
+    statusBar: 'rgba(34, 96, 255, 0.66)',
+    textInputBackground: '#ECF1FF',
+    textInputColor: '#809CFF',
   },
 };
 

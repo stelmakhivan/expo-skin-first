@@ -11,9 +11,11 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { Stack, useNavigationContainerRef } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { NativeWindStyleSheet, useColorScheme } from 'nativewind';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
+import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import { AuthHeader } from '@/components';
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 import '../../root-styles';
@@ -59,17 +61,43 @@ export default function RootLayout() {
 function RootLayoutNav() {
   const { colorScheme } = useColorScheme();
   const backgroundColor = useThemeColor({}, 'background');
+  const primaryColor = useThemeColor({}, 'primary');
+
+  const screenOptions = useMemo(
+    () => ({
+      contentStyle: { backgroundColor },
+      headerTitleStyle: [styles.stackTitle, { color: primaryColor }],
+      headerShadowVisible: false,
+    }),
+    [primaryColor, backgroundColor],
+  );
 
   return (
     <GestureHandlerRootView className="flex-1">
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack>
+        <Stack screenOptions={screenOptions}>
+          <Stack.Screen name="(auth)/index" options={{ headerShown: false }} />
           <Stack.Screen
-            name="index"
-            options={{ headerShown: false, contentStyle: { backgroundColor } }}
+            name="(auth)/login"
+            options={{
+              header: (props) => <AuthHeader {...props} headerTitle="Log In" />,
+            }}
+          />
+          <Stack.Screen
+            name="(auth)/sign-up"
+            options={{
+              header: (props) => <AuthHeader {...props} headerTitle="New Account" />,
+            }}
           />
         </Stack>
       </ThemeProvider>
     </GestureHandlerRootView>
   );
 }
+
+const styles = StyleSheet.create({
+  stackTitle: {
+    fontFamily: 'ls-semibold',
+    fontSize: 24,
+  },
+});

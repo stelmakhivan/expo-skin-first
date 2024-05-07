@@ -15,7 +15,7 @@ export function useThemeColor(
 
   useEffect(() => {
     setColorScheme(nativeColorScheme);
-  }, [nativeColorScheme]);
+  }, [nativeColorScheme, setColorScheme]);
 
   if (colorFromProps) {
     return colorFromProps;

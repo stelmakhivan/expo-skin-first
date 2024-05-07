@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import { Pressable, PressableProps, PressableStateCallbackType } from 'react-native';
+import { forwardRef, useMemo } from 'react';
+import { Pressable, PressableProps, PressableStateCallbackType, View } from 'react-native';
 
 import { ColorPalette } from '@/constants/Colors';
 import { useThemeColor } from '@/hooks/useThemeColor';
@@ -12,7 +12,7 @@ type ThemeProps = {
 
 export type ButtonProps = ThemeProps & PressableProps;
 
-export function Button(props: ButtonProps) {
+const Button = forwardRef<View, ButtonProps>((props: ButtonProps, ref) => {
   const { style, lightColor, darkColor, colorName = 'background', ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, colorName);
 
@@ -22,5 +22,7 @@ export function Button(props: ButtonProps) {
       : [{ backgroundColor }, style];
   }, [backgroundColor, style]);
 
-  return <Pressable style={resolvedStyle} {...otherProps} />;
-}
+  return <Pressable style={resolvedStyle} {...otherProps} ref={ref} />;
+});
+
+export { Button };
