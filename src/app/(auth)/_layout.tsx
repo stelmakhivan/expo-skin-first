@@ -1,9 +1,23 @@
+import { NativeStackHeaderProps } from '@react-navigation/native-stack';
 import { Stack } from 'expo-router';
 import { useMemo } from 'react';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
 
 import { AuthHeader } from '@/components';
 import { useThemeColor, useWarmUpBrowser } from '@/hooks';
+
+if (Platform.OS === 'web') {
+  WebBrowser.maybeCompleteAuthSession();
+}
+
+const LoginHeader = (props: NativeStackHeaderProps) => (
+  <AuthHeader {...props} headerTitle="Log In" />
+);
+
+const SignUpHeader = (props: NativeStackHeaderProps) => (
+  <AuthHeader {...props} headerTitle="New Account" />
+);
 
 const AuthLayout = () => {
   useWarmUpBrowser();
@@ -26,13 +40,13 @@ const AuthLayout = () => {
       <Stack.Screen
         name="login"
         options={{
-          header: (props) => <AuthHeader {...props} headerTitle="Log In" />,
+          header: LoginHeader,
         }}
       />
       <Stack.Screen
         name="sign-up"
         options={{
-          header: (props) => <AuthHeader {...props} headerTitle="New Account" />,
+          header: SignUpHeader,
         }}
       />
     </Stack>
