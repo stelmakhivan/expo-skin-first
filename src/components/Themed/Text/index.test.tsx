@@ -3,9 +3,9 @@ import React from 'react';
 
 import { Text, TextProps } from '.';
 
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
-jest.mock('@/hooks/useThemeColor');
+jest.mock('@/hooks');
 
 describe('Themed Text', () => {
   it('renders with provided light color when theme is light', () => {

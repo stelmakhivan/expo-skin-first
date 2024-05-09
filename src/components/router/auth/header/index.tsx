@@ -5,7 +5,7 @@ import { FC } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 
 import { StatusBar, Text, View } from '@/components/Themed';
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
 interface AuthHeaderProps extends NativeStackHeaderProps {
   headerTitle: string;

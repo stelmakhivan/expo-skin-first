@@ -2,7 +2,7 @@ import { forwardRef, useMemo } from 'react';
 import { Pressable, PressableProps, PressableStateCallbackType, View } from 'react-native';
 
 import { ColorPalette } from '@/constants/Colors';
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
 type ThemeProps = {
   lightColor?: string;

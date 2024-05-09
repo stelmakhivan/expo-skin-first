@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import { Platform, Pressable, StyleSheet } from 'react-native';
 
 import {
   TextInput,
@@ -12,7 +12,7 @@ import {
   DateInput,
   KeyboardAvoidingScrollView,
 } from '@/components';
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
 const SignUp = () => {
   const primaryColor = useThemeColor({}, 'primary');
@@ -121,8 +121,18 @@ const SignUp = () => {
           borderRadius={28}
           iconStyle={styles.icon}
         />
+        {Platform.OS === 'ios' && (
+          <Ionicons.Button
+            name="logo-apple"
+            size={28}
+            backgroundColor={secondaryColor}
+            color={primaryColor}
+            borderRadius={28}
+            iconStyle={styles.icon}
+          />
+        )}
         <Ionicons.Button
-          name="logo-apple"
+          name="logo-facebook"
           size={28}
           backgroundColor={secondaryColor}
           color={primaryColor}

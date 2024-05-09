@@ -1,7 +1,7 @@
 import { View as DefaultView } from 'react-native';
 
 import { ColorPalette } from '@/constants/Colors';
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 type ThemeProps = {
   lightColor?: string;
   darkColor?: string;

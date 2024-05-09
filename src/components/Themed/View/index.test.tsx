@@ -3,9 +3,9 @@ import React from 'react';
 
 import { View, ViewProps } from '.';
 
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
-jest.mock('@/hooks/useThemeColor');
+jest.mock('@/hooks');
 
 describe('Themed View', () => {
   it('renders with provided light color when theme is light', () => {

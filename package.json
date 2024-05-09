@@ -15,6 +15,8 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@clerk/clerk-expo": "^1.0.7",
+    "@clerk/clerk-react": "^5.0.4",
     "@dev-plugins/react-navigation": "^0.0.6",
     "@expo-google-fonts/league-spartan": "^0.2.3",
     "@expo/vector-icons": "^14.0.0",
@@ -22,11 +24,13 @@
     "@react-navigation/native": "^6.0.2",
     "date-fns": "^3.6.0",
     "expo": "51.0.1",
+    "expo-auth-session": "~5.5.2",
     "expo-dev-client": "~4.0.12",
     "expo-font": "~12.0.4",
     "expo-image": "~1.12.9",
     "expo-linking": "~6.3.1",
     "expo-router": "~3.5.11",
+    "expo-secure-store": "~13.0.1",
     "expo-splash-screen": "~0.27.4",
     "expo-status-bar": "~1.12.1",
     "expo-system-ui": "~3.0.4",

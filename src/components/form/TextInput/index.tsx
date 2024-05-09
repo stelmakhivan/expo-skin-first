@@ -1,7 +1,7 @@
 import { forwardRef, ReactNode, useMemo } from 'react';
 import { TextInput as NativeTextInput, TextInputProps } from 'react-native';
 
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
 interface Props extends TextInputProps {
   Icon?: ReactNode;

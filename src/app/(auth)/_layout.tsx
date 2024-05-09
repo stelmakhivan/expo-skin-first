@@ -3,9 +3,11 @@ import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { AuthHeader } from '@/components';
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor, useWarmUpBrowser } from '@/hooks';
 
 const AuthLayout = () => {
+  useWarmUpBrowser();
+
   const backgroundColor = useThemeColor({}, 'background');
   const primaryColor = useThemeColor({}, 'primary');
 

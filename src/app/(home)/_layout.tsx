@@ -1,11 +1,14 @@
-import { Stack } from 'expo-router';
+import { useAuth } from '@/services';
+import { Redirect, Stack } from 'expo-router';
 import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { StatusBar } from '@/components';
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
 const HomeLayout = () => {
+  const { isSignedIn } = useAuth();
+
   const backgroundColor = useThemeColor({}, 'background');
   const primaryColor = useThemeColor({}, 'primary');
 
@@ -18,6 +21,11 @@ const HomeLayout = () => {
     }),
     [primaryColor, backgroundColor],
   );
+
+  if (!isSignedIn) {
+    return <Redirect href={'/(auth)'} />;
+  }
+
   return (
     <Stack screenOptions={screenOptions}>
       <Stack.Screen name="(tabs)" />

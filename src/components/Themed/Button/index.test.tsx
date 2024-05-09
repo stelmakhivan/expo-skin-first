@@ -3,9 +3,9 @@ import React from 'react';
 
 import { Button, ButtonProps } from '.';
 
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
-jest.mock('@/hooks/useThemeColor');
+jest.mock('@/hooks');
 
 describe('Themed Button', () => {
   it('renders with provided light color when theme is light', () => {

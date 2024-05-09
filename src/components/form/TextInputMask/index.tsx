@@ -3,7 +3,7 @@ import { forwardRef, useMemo } from 'react';
 import { TextInput as NativeTextInput } from 'react-native';
 import NativeTextInputMask, { TextInputMaskProps } from 'react-native-text-input-mask';
 
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
 const StyledTextInputMask = styled(NativeTextInputMask);
 

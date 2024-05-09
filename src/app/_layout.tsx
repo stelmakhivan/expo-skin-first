@@ -13,6 +13,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { NativeWindStyleSheet, useColorScheme } from 'nativewind';
 import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { AuthProvider, useAuth, tokenCache } from '@/services';
 
 import '../../global.css';
 
@@ -23,6 +24,8 @@ SplashScreen.preventAutoHideAsync();
 NativeWindStyleSheet.setOutput({
   default: 'native',
 });
+
+const AUTH_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_AUTH_PUBLISHABLE_KEY;
 
 const FONTS_MAP = {
   'ls-thin': LeagueSpartan_100Thin,
@@ -53,11 +56,20 @@ export default function RootLayout() {
     return null;
   }
 
-  return <RootLayoutNav />;
+  return (
+    <AuthProvider publishableKey={AUTH_PUBLISHABLE_KEY!} tokenCache={tokenCache}>
+      <RootLayoutNav />
+    </AuthProvider>
+  );
 }
 
 function RootLayoutNav() {
+  const { isLoaded } = useAuth();
   const { colorScheme } = useColorScheme();
+
+  if (!isLoaded) {
+    return null;
+  }
 
   return (
     <GestureHandlerRootView className="flex-1">

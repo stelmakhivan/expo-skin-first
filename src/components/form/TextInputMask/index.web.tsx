@@ -1,7 +1,7 @@
 import { forwardRef, useMemo } from 'react';
 import { StyleSheet, TextInput as NativeTextInput, TextInputProps } from 'react-native';
 
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
 interface Props extends TextInputProps {
   keyboardType?: TextInputProps['keyboardType'];

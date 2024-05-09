@@ -8,7 +8,7 @@ import {
   useMemo,
 } from 'react';
 
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
 interface DateInputProps
   extends Omit<

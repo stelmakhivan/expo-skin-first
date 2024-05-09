@@ -5,7 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { View } from '../View';
 
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
 const StyledStatusBar = () => {
   const statusBarColor = useThemeColor({}, 'statusBar');

@@ -1,7 +1,7 @@
 import { Text as DefaultText, TextProps as DefaultTextProps } from 'react-native';
 
 import { ColorPalette } from '@/constants/Colors';
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from '@/hooks';
 
 type ThemeProps = {
   lightColor?: string;

@@ -1,12 +1,14 @@
 # Skin First Mobile App
 
-### [Link to Figma design](https://www.figma.com/file/uujDxnD7XOwBdYPZzrn7St/Medical-Health-Mobile-App%3A-Dermatology-App-Ui-Kit-(Community)?type=design&node-id=37-626&mode=design)
+### [Link to Figma design](<https://www.figma.com/file/uujDxnD7XOwBdYPZzrn7St/Medical-Health-Mobile-App%3A-Dermatology-App-Ui-Kit-(Community)?type=design&node-id=37-626&mode=design>)
 
 ## Setup project
 
 ```shell
 yarn install
-yarn start
+yarn ios
+yarn android
+yarn web
 ```
 
 ### Tested with environment
