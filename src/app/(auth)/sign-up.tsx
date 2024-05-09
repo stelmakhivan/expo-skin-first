@@ -142,7 +142,7 @@ const SignUp = () => {
       </View>
       <Text className="text-center font-ls-light text-[12px] mb-12">
         already have an account?{' '}
-        <Link href="/(auth)/login">
+        <Link href="/login">
           <Text className="font-ls-medium" colorName="primary">
             Log In
           </Text>

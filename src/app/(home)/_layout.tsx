@@ -17,7 +17,7 @@ const HomeLayout = () => {
       contentStyle: { backgroundColor },
       headerTitleStyle: [styles.stackTitle, { color: primaryColor }],
       headerShadowVisible: false,
-      header: () => <StatusBar />,
+      header: StatusBar,
     }),
     [primaryColor, backgroundColor],
   );

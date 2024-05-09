@@ -29,14 +29,14 @@ const Register = () => {
           </Text>
         </View>
         <View style={footerStyle}>
-          <Link href="/(auth)/login" asChild>
+          <Link href="/login" asChild>
             <Button
               className="w-[207px] p-3 rounded-full self-center justify-center items-center mb-4 active:opacity-80"
               colorName="primary">
               <Text className="text-white font-ls-medium text-2xl leading-6">Log In</Text>
             </Button>
           </Link>
-          <Link href="/(auth)/sign-up" asChild>
+          <Link href="/sign-up" asChild>
             <Button
               className="w-[207px] p-3 rounded-full self-center justify-center items-center active:opacity-80"
               colorName="secondary">
