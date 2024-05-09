@@ -1,4 +1,4 @@
-# Skin First Mobile App
+# Skin First Mobile and Web App
 
 ### [Link to Figma design](<https://www.figma.com/file/uujDxnD7XOwBdYPZzrn7St/Medical-Health-Mobile-App%3A-Dermatology-App-Ui-Kit-(Community)?type=design&node-id=37-626&mode=design>)
 
