@@ -10,18 +10,18 @@ PODS:
   - EXJSONUtils (0.13.1)
   - EXManifests (0.14.2):
     - ExpoModulesCore
-  - Expo (51.0.1):
+  - Expo (51.0.2):
     - ExpoModulesCore
-  - expo-dev-client (4.0.12):
+  - expo-dev-client (4.0.13):
     - EXManifests
     - expo-dev-launcher
     - expo-dev-menu
     - expo-dev-menu-interface
     - EXUpdatesInterface
-  - expo-dev-launcher (4.0.13):
+  - expo-dev-launcher (4.0.14):
     - DoubleConversion
     - EXManifests
-    - expo-dev-launcher/Main (= 4.0.13)
+    - expo-dev-launcher/Main (= 4.0.14)
     - expo-dev-menu
     - expo-dev-menu-interface
     - ExpoModulesCore
@@ -38,6 +38,7 @@ PODS:
     - React-featureflags
     - React-graphics
     - React-ImageManager
+    - React-jsinspector
     - React-NativeModulesApple
     - React-RCTAppDelegate
     - React-RCTFabric
@@ -46,7 +47,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - expo-dev-launcher/Main (4.0.13):
+  - expo-dev-launcher/Main (4.0.14):
     - DoubleConversion
     - EXManifests
     - expo-dev-launcher/Unsafe
@@ -66,6 +67,7 @@ PODS:
     - React-featureflags
     - React-graphics
     - React-ImageManager
+    - React-jsinspector
     - React-NativeModulesApple
     - React-RCTAppDelegate
     - React-RCTFabric
@@ -74,7 +76,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - expo-dev-launcher/Unsafe (4.0.13):
+  - expo-dev-launcher/Unsafe (4.0.14):
     - DoubleConversion
     - EXManifests
     - expo-dev-menu
@@ -93,6 +95,7 @@ PODS:
     - React-featureflags
     - React-graphics
     - React-ImageManager
+    - React-jsinspector
     - React-NativeModulesApple
     - React-RCTAppDelegate
     - React-RCTFabric
@@ -101,10 +104,10 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - expo-dev-menu (5.0.13):
+  - expo-dev-menu (5.0.14):
     - DoubleConversion
-    - expo-dev-menu/Main (= 5.0.13)
-    - expo-dev-menu/ReactNativeCompatibles (= 5.0.13)
+    - expo-dev-menu/Main (= 5.0.14)
+    - expo-dev-menu/ReactNativeCompatibles (= 5.0.14)
     - glog
     - hermes-engine
     - RCT-Folly (= 2024.01.01.00)
@@ -125,7 +128,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - Yoga
   - expo-dev-menu-interface (1.8.3)
-  - expo-dev-menu/Main (5.0.13):
+  - expo-dev-menu/Main (5.0.14):
     - DoubleConversion
     - EXManifests
     - expo-dev-menu-interface
@@ -143,6 +146,7 @@ PODS:
     - React-featureflags
     - React-graphics
     - React-ImageManager
+    - React-jsinspector
     - React-NativeModulesApple
     - React-RCTFabric
     - React-rendererdebug
@@ -150,7 +154,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - expo-dev-menu/ReactNativeCompatibles (5.0.13):
+  - expo-dev-menu/ReactNativeCompatibles (5.0.14):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -171,7 +175,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - expo-dev-menu/SafeAreaView (5.0.13):
+  - expo-dev-menu/SafeAreaView (5.0.14):
     - DoubleConversion
     - ExpoModulesCore
     - glog
@@ -193,7 +197,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - expo-dev-menu/Vendored (5.0.13):
+  - expo-dev-menu/Vendored (5.0.14):
     - DoubleConversion
     - expo-dev-menu/SafeAreaView
     - glog
@@ -286,7 +290,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - Yoga
   - EXStructuredHeaders (3.8.0)
-  - EXUpdates (0.25.10):
+  - EXUpdates (0.25.11):
     - DoubleConversion
     - EASClient
     - EXManifests
@@ -1504,7 +1508,7 @@ PODS:
     - React-logger (= 0.74.1)
     - React-perflogger (= 0.74.1)
     - React-utils (= 0.74.1)
-  - RNDateTimePicker (8.0.0):
+  - RNDateTimePicker (7.7.0):
     - React-Core
   - RNGestureHandler (2.16.2):
     - DoubleConversion
@@ -1527,7 +1531,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNReanimated (3.10.0):
+  - RNReanimated (3.10.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1871,10 +1875,10 @@ SPEC CHECKSUMS:
   EXConstants: 9a008dbf262550884e6280dea95b81b51f65ea6f
   EXJSONUtils: 30c17fd9cc364d722c0946a550dfbf1be92ef6a4
   EXManifests: 866d0c365eb46835d48be2c7a0e00418312992b4
-  Expo: 5e730be728d88f8b4825e25677e0b9c6277b7810
-  expo-dev-client: 1d854e432b261309eb2c285abcf24401365ccd1f
-  expo-dev-launcher: 4e809b9d2160f257438cbbd967c3d1de7bbea061
-  expo-dev-menu: 258de310bd98547505906d8e9ca210058743adf4
+  Expo: a615f2b4d9412683c7c63ce20b376a3ab0c8af83
+  expo-dev-client: a4fbaa4a68a09abc4dabf25038b77f8f845b8433
+  expo-dev-launcher: 3ac0313ccef6edf71ae24a22dbee1e2a0eedcf25
+  expo-dev-menu: 8559d77f4037c6105b21a424dec68f235496c391
   expo-dev-menu-interface: be32c09f1e03833050f0ee290dcc86b3ad0e73e4
   ExpoAsset: 9b7433ecc5f1b608ccbb823492e062bde944abd2
   ExpoCrypto: 156078f266bf28f80ecf5e2a9c3a0d6ffce07a1c
@@ -1889,7 +1893,7 @@ SPEC CHECKSUMS:
   ExpoWebBrowser: 7595ccac6938eb65b076385fd23d035db9ecdc8e
   EXSplashScreen: d439ca817211886dc80a00f3761e3b6d861d7205
   EXStructuredHeaders: cb8d1f698e144f4c5547b4c4963e1552f5d2b457
-  EXUpdates: 827f065384e1295d7e19aea580dc03f4b7df2cbc
+  EXUpdates: e1c6e9b8c47d5459932d53edc7a69a5c0195214e
   EXUpdatesInterface: 996527fd7d1a5d271eb523258d603f8f92038f24
   FBLazyVector: 898d14d17bf19e2435cafd9ea2a1033efe445709
   fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
@@ -1949,9 +1953,9 @@ SPEC CHECKSUMS:
   React-runtimescheduler: e2152ed146b6a35c07386fc2ac4827b27e6aad12
   React-utils: 3285151c9d1e3a28a9586571fc81d521678c196d
   ReactCommon: f42444e384d82ab89184aed5d6f3142748b54768
-  RNDateTimePicker: cd42eda5f315fc320f0b359413bd598957f7e601
+  RNDateTimePicker: 4f3c4dbd4f908be32ec8c93f086e8924bd4a2e07
   RNGestureHandler: 2282cfbcf86c360d29f44ace393203afd5c6cff7
-  RNReanimated: daf22f7ef44083dd6aadc8550cae88e5d8d7190a
+  RNReanimated: 35f9ac9c3ac42d0497ebd1cce5c39d7687a8493e
   RNScreens: b32a9ff15bea7fcdbe5dff6477bc503f792b1208
   SDWebImage: dfe95b2466a9823cf9f0c6d01217c06550d7b29a
   SDWebImageAVIFCoder: 00310d246aab3232ce77f1d8f0076f8c4b021d90
