@@ -1,21 +1,22 @@
 import 'ts-node/register';
+import Colors from './src/constants/Colors';
 import { ExpoConfig } from 'expo/config';
 
 const config: ExpoConfig = {
   plugins: [
     'expo-router',
-    [
-      'expo-font',
-      {
-        fonts: [
-          'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_100Thin.ttf',
-          'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_300Light.ttf',
-          'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_400Regular.ttf',
-          'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_500Medium.ttf',
-          'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_600SemiBold.ttf',
-        ],
-      },
-    ],
+    // [
+    //   'expo-font',
+    //   {
+    //     fonts: [
+    //       'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_100Thin.ttf',
+    //       'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_300Light.ttf',
+    //       'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_400Regular.ttf',
+    //       'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_500Medium.ttf',
+    //       'node_modules/@expo-google-fonts/league-spartan/LeagueSpartan_600SemiBold.ttf',
+    //     ],
+    //   },
+    // ],
   ],
   scheme: 'skin-first',
   name: 'Skin First',
@@ -27,9 +28,8 @@ const config: ExpoConfig = {
   splash: {
     image: './assets/images/splash.png',
     resizeMode: 'contain',
-    backgroundColor: '#2260FF',
+    backgroundColor: Colors.light.primary,
   },
-  assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
     bundleIdentifier: 'com.stelmakhivan.skinfirst',
@@ -57,7 +57,7 @@ const config: ExpoConfig = {
   android: {
     adaptiveIcon: {
       foregroundImage: './assets/images/adaptive-icon.png',
-      backgroundColor: '#2260FF',
+      backgroundColor: Colors.light.primary,
     },
     package: 'com.stelmakhivan.skinfirst',
   },

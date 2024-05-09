@@ -14,7 +14,7 @@ import { NativeWindStyleSheet, useColorScheme } from 'nativewind';
 import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import '../../root-styles';
+import '../../global.css';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -24,18 +24,20 @@ NativeWindStyleSheet.setOutput({
   default: 'native',
 });
 
+const FONTS_MAP = {
+  'ls-thin': LeagueSpartan_100Thin,
+  'ls-light': LeagueSpartan_300Light,
+  'ls-regular': LeagueSpartan_400Regular,
+  'ls-medium': LeagueSpartan_500Medium,
+  'ls-semibold': LeagueSpartan_600SemiBold,
+};
+
 export default function RootLayout() {
   const navigationRef = useNavigationContainerRef();
 
   useReactNavigationDevTools(navigationRef);
 
-  const [loaded, error] = useFonts({
-    'ls-thin': LeagueSpartan_100Thin,
-    'ls-light': LeagueSpartan_300Light,
-    'ls-regular': LeagueSpartan_400Regular,
-    'ls-medium': LeagueSpartan_500Medium,
-    'ls-semibold': LeagueSpartan_600SemiBold,
-  });
+  const [loaded, error] = useFonts(FONTS_MAP);
 
   useEffect(() => {
     if (error) throw error;

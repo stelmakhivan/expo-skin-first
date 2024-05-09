@@ -42,4 +42,6 @@ const TextInputMask = forwardRef<NativeTextInput, Props>(
   },
 );
 
+TextInputMask.displayName = 'TextInputMask';
+
 export { TextInputMask };

@@ -22,14 +22,14 @@ const DateInput = forwardRef<DateTimePickerModal, DateInputProps>(
     },
     ref,
   ) => {
-    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+    const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
 
     const showDatePicker = () => {
-      setDatePickerVisibility(true);
+      setIsDatePickerVisible(true);
     };
 
     const hideDatePicker = () => {
-      setDatePickerVisibility(false);
+      setIsDatePickerVisible(false);
     };
 
     const handleConfirm = (date: Date) => {
@@ -64,5 +64,7 @@ const DateInput = forwardRef<DateTimePickerModal, DateInputProps>(
     );
   },
 );
+
+DateInput.displayName = 'DateInput';
 
 export { DateInput };

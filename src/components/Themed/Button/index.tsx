@@ -25,4 +25,6 @@ const Button = forwardRef<View, ButtonProps>((props: ButtonProps, ref) => {
   return <Pressable style={resolvedStyle} {...otherProps} ref={ref} />;
 });
 
+Button.displayName = 'Button';
+
 export { Button };

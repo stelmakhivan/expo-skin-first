@@ -44,4 +44,6 @@ const TextInputMask = forwardRef<NativeTextInput & typeof StyledTextInputMask, P
   },
 );
 
+TextInputMask.displayName = 'TextInputMask';
+
 export { TextInputMask };
