@@ -59,7 +59,7 @@ index 0000000..452f019
 +  buildClerk,
 +  clerk
 +});
-+//# sourceMappingURL=singleton.js.map
++//# sourceMappingURL=singleton.web.js.map
 diff --git a/node_modules/@clerk/clerk-expo/dist/singleton.web.js.map b/node_modules/@clerk/clerk-expo/dist/singleton.web.js.map
 new file mode 100644
 index 0000000..db5174e
