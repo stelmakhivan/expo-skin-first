@@ -15,7 +15,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@clerk/clerk-expo": "^1.0.7",
+    "@clerk/clerk-expo": "^1.1.0",
     "@clerk/clerk-react": "^5.0.4",
     "@dev-plugins/react-navigation": "^0.0.6",
     "@expo-google-fonts/league-spartan": "^0.2.3",
@@ -26,7 +26,7 @@
     "expo": "~51.0.2",
     "expo-auth-session": "~5.5.2",
     "expo-dev-client": "~4.0.13",
-    "expo-font": "~12.0.4",
+    "expo-font": "~12.0.5",
     "expo-image": "~1.12.9",
     "expo-linking": "~6.3.1",
     "expo-router": "~3.5.11",

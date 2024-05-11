@@ -11,6 +11,7 @@ const config: ExpoConfig = {
         faceIDPermission: 'Allow $(PRODUCT_NAME) to access your Face ID biometric data.',
       },
     ],
+    'expo-font',
   ],
   scheme: 'skin-first',
   name: 'Skin First',
