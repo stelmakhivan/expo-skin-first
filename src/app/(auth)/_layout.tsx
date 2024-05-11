@@ -1,5 +1,6 @@
+import { useAuth } from '@/services';
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';
-import { Stack } from 'expo-router';
+import { Redirect, Stack } from 'expo-router';
 import { useMemo } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
@@ -22,6 +23,8 @@ const SignUpHeader = (props: NativeStackHeaderProps) => (
 const AuthLayout = () => {
   useWarmUpBrowser();
 
+  const { isSignedIn } = useAuth();
+
   const backgroundColor = useThemeColor({}, 'background');
   const primaryColor = useThemeColor({}, 'primary');
 
@@ -33,6 +36,10 @@ const AuthLayout = () => {
     }),
     [primaryColor, backgroundColor],
   );
+
+  if (isSignedIn) {
+    return <Redirect href={'/(home)'} />;
+  }
 
   return (
     <Stack screenOptions={screenOptions}>

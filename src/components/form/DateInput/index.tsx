@@ -17,7 +17,7 @@ const DateInput = forwardRef<DateTimePickerModal, DateInputProps>(
     {
       date,
       onChange,
-      inputClassName = 'h-[45px] rounded-[13px] px-4 font-ls-regular text-[20px] mb-8',
+      inputClassName = 'h-[45px] rounded-[13px] px-4 font-ls-regular text-[20px]',
       ...props
     },
     ref,
