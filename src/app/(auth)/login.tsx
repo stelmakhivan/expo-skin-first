@@ -89,7 +89,7 @@ const Login = () => {
           <TextInput
             {...field}
             onChangeText={onChange}
-            keyboardType="email-address"
+            inputMode="email"
             placeholder="example@example.com"
             autoCapitalize="none"
             className="h-[45px] rounded-[13px] px-4 font-ls-regular text-[20px]"

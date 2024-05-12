@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { forwardRef, useState } from 'react';
+import { FC, useState } from 'react';
 import { Pressable } from 'react-native';
 import DateTimePickerModal, { DateTimePickerProps } from 'react-native-modal-datetime-picker';
 
@@ -12,58 +12,52 @@ interface DateInputProps extends Omit<DateTimePickerProps, 'onConfirm' | 'onCanc
   inputClassName?: string;
 }
 
-const DateInput = forwardRef<DateTimePickerModal, DateInputProps>(
-  (
-    {
-      date,
-      onChange,
-      inputClassName = 'h-[45px] rounded-[13px] px-4 font-ls-regular text-[20px]',
-      ...props
-    },
-    ref,
-  ) => {
-    const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
+const DateInput: FC<DateInputProps> = ({
+  date,
+  onChange,
+  inputClassName = 'h-[45px] rounded-[13px] px-4 font-ls-regular text-[20px]',
+  ...props
+}) => {
+  const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
 
-    const showDatePicker = () => {
-      setIsDatePickerVisible(true);
-    };
+  const showDatePicker = () => {
+    setIsDatePickerVisible(true);
+  };
 
-    const hideDatePicker = () => {
-      setIsDatePickerVisible(false);
-    };
+  const hideDatePicker = () => {
+    setIsDatePickerVisible(false);
+  };
 
-    const handleConfirm = (date: Date) => {
-      onChange?.(date);
-      hideDatePicker();
-    };
+  const handleConfirm = (date: Date) => {
+    onChange?.(date);
+    hideDatePicker();
+  };
 
-    return (
-      <>
-        <DateTimePickerModal
-          {...props}
-          ref={ref}
-          isVisible={isDatePickerVisible}
-          mode="date"
-          onConfirm={handleConfirm}
-          onCancel={hideDatePicker}
-          date={date}
-        />
-        <Pressable onPress={showDatePicker}>
-          <View pointerEvents="none">
-            <TextInputMask
-              keyboardType="numeric"
-              mask="[00]/[00]/[0000]"
-              placeholder="DD/MM/YYYY"
-              value={date ? format(date, 'dd/MM/yyyy') : undefined}
-              editable={false}
-              className={inputClassName}
-            />
-          </View>
-        </Pressable>
-      </>
-    );
-  },
-);
+  return (
+    <>
+      <DateTimePickerModal
+        {...props}
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+        date={date}
+      />
+      <Pressable onPress={showDatePicker}>
+        <View pointerEvents="none">
+          <TextInputMask
+            keyboardType="numeric"
+            mask="[00]/[00]/[0000]"
+            placeholder="DD/MM/YYYY"
+            value={date ? format(date, 'dd/MM/yyyy') : undefined}
+            editable={false}
+            className={inputClassName}
+          />
+        </View>
+      </Pressable>
+    </>
+  );
+};
 
 DateInput.displayName = 'DateInput';
 

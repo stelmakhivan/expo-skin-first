@@ -1,31 +1,27 @@
+import { ComponentProps, forwardRef, useMemo } from 'react';
+import { CursorValue, ViewStyle } from 'react-native';
+import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
-import {
-  ChangeEventHandler,
-  CSSProperties,
-  DetailedHTMLProps,
-  forwardRef,
-  InputHTMLAttributes,
-  useMemo,
-} from 'react';
+
+import 'react-datepicker/dist/react-datepicker.css';
+
+import { TextInputMask } from '../TextInputMask';
 
 import { useThemeColor } from '@/hooks';
 
-interface DateInputProps
-  extends Omit<
-    DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-    'onChange'
-  > {
-  date?: Date | string;
+interface DateInputProps extends Omit<DatePicker, 'onChange'> {
+  date?: Date;
   onChange?: (date: Date) => void;
   inputClassName?: string;
+  style?: ViewStyle;
 }
 
-const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
+const DateInput = forwardRef<DatePicker, DateInputProps>(
   (
     {
-      date = '',
+      date,
       onChange,
-      inputClassName = 'h-[45px] rounded-[13px] px-4 font-ls-regular text-[20px] mb-8',
+      inputClassName = 'w-full h-[45px] rounded-[13px] px-4 font-ls-regular text-[20px]',
       style,
       ...props
     },
@@ -40,30 +36,47 @@ const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
             {
               backgroundColor: textInputBackgroundColor,
               color: textInputColor,
+              cursor: 'pointer' as CursorValue,
             },
             style,
           ]
         : {
             backgroundColor: textInputBackgroundColor,
             color: textInputColor,
+            cursor: 'pointer' as CursorValue,
           };
     }, [style, textInputBackgroundColor, textInputColor]);
 
-    const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-      onChange?.(new Date(event.target.value));
+    const handleChange: ComponentProps<typeof DatePicker>['onChange'] = (date) => {
+      if (date instanceof Date) {
+        onChange?.(date);
+      }
     };
 
     return (
-      <input
+      <DatePicker
         {...props}
         ref={ref}
-        type="date"
-        placeholder="DD/MM/YYYY"
-        value={typeof date === 'string' ? date : format(date, 'yyyy-MM-dd')}
+        portalId="root-date-portal"
+        placeholderText="DD/MM/YYYY"
+        selected={date}
         onChange={handleChange}
-        className={inputClassName}
-        pattern="\d{2}-\d{2}-\d{4}"
-        style={textInputStyle as CSSProperties}
+        dateFormat="dd/MM/yyyy"
+        dropdownMode="select"
+        showMonthDropdown
+        showYearDropdown
+        withPortal
+        customInput={
+          <TextInputMask
+            keyboardType="numeric"
+            mask="[00]/[00]/[0000]"
+            placeholder="DD/MM/YYYY"
+            value={date ? format(date, 'dd/MM/yyyy') : undefined}
+            editable={false}
+            className={inputClassName}
+            style={textInputStyle}
+          />
+        }
       />
     );
   },

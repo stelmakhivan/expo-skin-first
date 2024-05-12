@@ -1,3 +1,5 @@
+import { validateAge } from '@/utils';
+import { format } from 'date-fns';
 import { useState } from 'react';
 import { Link } from 'expo-router';
 import { Alert, Platform, Pressable, StyleSheet } from 'react-native';
@@ -23,10 +25,7 @@ import { AuthAPIError, useSignUp } from '@/services';
 
 const validationSchema = zod
   .object({
-    fullName: zod
-      .string({ required_error: 'Full Name is required' })
-      .min(2, { message: 'Must have at least 2 characters' })
-      .max(50),
+    fullName: zod.string({ required_error: 'Full Name is required' }).min(2).max(50),
     password: zod.string({ required_error: 'Password is required' }).regex(PASSWORD_REGEXP, {
       message:
         'Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character',
@@ -36,8 +35,9 @@ const validationSchema = zod
     phone: zod.string({ required_error: 'Phone Number is required' }).regex(PHONE_REGEXP, {
       message: 'Your phone number is not valid',
     }),
-    // TODO: validate if user is 18 years old or older
-    dateOfBirth: zod.coerce.date(),
+    dateOfBirth: zod.date().refine(validateAge, {
+      message: 'You must be at least 18 years old to sign up.',
+    }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Passwords do not match',
@@ -52,7 +52,7 @@ const DEFAULT_VALUES: SignUpForm = {
   confirmPassword: '',
   email: '',
   phone: '',
-  dateOfBirth: new Date(),
+  dateOfBirth: new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
 };
 
 const SignUp = () => {
@@ -90,7 +90,7 @@ const SignUp = () => {
         password: data.password,
         unsafeMetadata: {
           fullName: data.fullName,
-          dateOfBirth: data.dateOfBirth,
+          dateOfBirth: format(data.dateOfBirth, 'dd/MM/yyyy'),
           phoneNumber: data.phone,
         },
       });
@@ -227,7 +227,7 @@ const SignUp = () => {
               <TextInput
                 {...field}
                 onChangeText={onChange}
-                keyboardType="email-address"
+                inputMode="email"
                 placeholder="example@example.com"
                 autoCapitalize="none"
                 className="h-[45px] rounded-[13px] px-4 font-ls-regular text-[20px]"
@@ -244,7 +244,7 @@ const SignUp = () => {
               <TextInputMask
                 {...field}
                 onChangeText={onChange}
-                keyboardType="phone-pad"
+                inputMode="tel"
                 mask="+[0] [000] [000] [0000]"
                 placeholder="+1 123 456 7890"
                 className="h-[45px] rounded-[13px] px-4 font-ls-regular text-[20px]"
@@ -257,7 +257,7 @@ const SignUp = () => {
           <Text className="font-ls-medium text-xl mb-2">Date of birth</Text>
           <Controller
             control={control}
-            render={({ field: { onChange, value, ...field } }) => (
+            render={({ field: { onChange, value, ref, ...field } }) => (
               <DateInput {...field} date={value} onChange={onChange} />
             )}
             name="dateOfBirth"

@@ -12,6 +12,7 @@ const config: ExpoConfig = {
       },
     ],
     'expo-font',
+    './plugins/custom-android-styles.ts',
   ],
   scheme: 'skin-first',
   name: 'Skin First',
