@@ -9,6 +9,7 @@ import {
 } from '@expo-google-fonts/league-spartan';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Slot, useNavigationContainerRef } from 'expo-router';
+import Head from 'expo-router/head';
 import * as SplashScreen from 'expo-splash-screen';
 import { NativeWindStyleSheet, useColorScheme } from 'nativewind';
 import { useEffect } from 'react';
@@ -73,6 +74,9 @@ function RootLayoutNav() {
 
   return (
     <GestureHandlerView>
+      <Head>
+        <title>Skin First Dermatology Center</title>
+      </Head>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Slot />
       </ThemeProvider>

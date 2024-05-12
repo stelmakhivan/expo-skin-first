@@ -1,4 +1,6 @@
 import { StartOAuthFlowParams, StartOAuthFlowReturnType, useOAuth } from '@/services';
+import { makeRedirectUri } from 'expo-auth-session';
+import { usePathname } from 'expo-router';
 import { useCallback } from 'react';
 
 export enum Strategy {
@@ -8,9 +10,23 @@ export enum Strategy {
 }
 
 export const useSelectAuth = () => {
-  const { startOAuthFlow: googleAuth } = useOAuth({ strategy: 'oauth_google' });
-  const { startOAuthFlow: appleAuth } = useOAuth({ strategy: 'oauth_apple' });
-  const { startOAuthFlow: facebookAuth } = useOAuth({ strategy: 'oauth_facebook' });
+  const currentRoute = usePathname();
+  const redirectUri = makeRedirectUri({
+    path: currentRoute,
+  });
+
+  const { startOAuthFlow: googleAuth } = useOAuth({
+    strategy: 'oauth_google',
+    redirectUrl: redirectUri,
+  });
+  const { startOAuthFlow: appleAuth } = useOAuth({
+    strategy: 'oauth_apple',
+    redirectUrl: redirectUri,
+  });
+  const { startOAuthFlow: facebookAuth } = useOAuth({
+    strategy: 'oauth_facebook',
+    redirectUrl: redirectUri,
+  });
 
   return useCallback(
     async (strategy: Strategy) => {

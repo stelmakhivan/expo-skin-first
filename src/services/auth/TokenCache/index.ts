@@ -9,7 +9,7 @@ export interface TokenCache {
 class AuthTokenCache implements TokenCache {
   async getToken(key: string) {
     try {
-      return SecureStore.getItemAsync(key);
+      return await SecureStore.getItemAsync(key);
     } catch (err) {
       console.warn('[AuthTokenCache] getToken error: ', err);
       return null;
@@ -18,7 +18,7 @@ class AuthTokenCache implements TokenCache {
 
   async saveToken(key: string, value: string) {
     try {
-      return SecureStore.setItemAsync(key, value);
+      return await SecureStore.setItemAsync(key, value);
     } catch (err) {
       console.warn('[AuthTokenCache] saveToken error: ', err);
       return;
