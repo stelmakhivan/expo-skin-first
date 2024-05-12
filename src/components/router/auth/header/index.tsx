@@ -16,13 +16,19 @@ const AuthHeader: FC<AuthHeaderProps> = (props) => {
 
   const router = useRouter();
 
+  const canGoBack = router.canGoBack();
+
   return (
     <>
       <StatusBar />
       <View className="flex-row items-center justify-center py-8 px-8">
-        <Pressable onPress={router.back} style={styles.backIcon}>
-          <Ionicons color={primaryColor} name="chevron-back" size={28} />
-        </Pressable>
+        {canGoBack ? (
+          <Pressable onPress={router.back} style={styles.backIcon}>
+            <Ionicons color={primaryColor} name="chevron-back" size={28} />
+          </Pressable>
+        ) : (
+          <View style={styles.backIcon} />
+        )}
         <Text style={props.options.headerTitleStyle}>{props.headerTitle}</Text>
       </View>
     </>
