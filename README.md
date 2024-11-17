@@ -6,20 +6,21 @@
 
 ```shell
 yarn install
+cd ios && pod install && cd ..
 yarn ios
 yarn android
 yarn web
 ```
 
-### Tested with environment
+## Tested with environment
 
 `npx react-native info`
 
 ```shell
 System:
-  OS: macOS 14.4.1
+  OS: macOS 15.1
   CPU: (10) arm64 Apple M1 Max
-  Memory: 207.94 MB / 32.00 GB
+  Memory: 5.18 GB / 32.00 GB
   Shell:
     version: "5.9"
     path: /bin/zsh
@@ -43,17 +44,17 @@ Managers:
 SDKs:
   iOS SDK:
     Platforms:
-      - DriverKit 23.4
-      - iOS 17.4
-      - macOS 14.4
-      - tvOS 17.4
-      - visionOS 1.1
-      - watchOS 10.4
+      - DriverKit 24.1
+      - iOS 18.1
+      - macOS 15.1
+      - tvOS 18.1
+      - visionOS 2.1
+      - watchOS 11.1
   Android SDK: Not Found
 IDEs:
-  Android Studio: 2023.3 AI-233.14808.21.2331.11709847
+  Android Studio: 2024.2 AI-242.23339.11.2421.12550806
   Xcode:
-    version: 15.3/15E204a
+    version: 16.1/16B40
     path: /usr/bin/xcodebuild
 Languages:
   Java:
@@ -63,20 +64,27 @@ Languages:
     version: 3.2.2
     path: /Users/ivanstelmakh/.rvm/rubies/ruby-3.2.2/bin/ruby
 npmPackages:
-  "@react-native-community/cli": Not Found
+  "@react-native-community/cli":
+    installed: 15.1.2
+    wanted: latest
   react:
-    installed: 18.2.0
-    wanted: 18.2.0
+    installed: 18.3.1
+    wanted: 18.3.1
   react-native:
-    installed: 0.73.6
-    wanted: 0.73.6
+    installed: 0.76.2
+    wanted: 0.76.2
   react-native-macos: Not Found
 npmGlobalPackages:
   "*react-native*": Not Found
 Android:
-  hermesEnabled: Not found
-  newArchEnabled: Not found
+  hermesEnabled: true
+  newArchEnabled: false
 iOS:
-  hermesEnabled: Not found
-  newArchEnabled: Not found
+  hermesEnabled: true
+  newArchEnabled: false
 ```
+
+### NOTES
+
+- New Architecture is disabled because of the issue with the `react-native-text-input-mask` library.
+  It's not compatible with the new architecture yet.
