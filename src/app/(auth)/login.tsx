@@ -97,7 +97,7 @@ const Login = () => {
         )}
         name="email"
       />
-      <Text className="text-red-700 min-h-[20px] mb-1">{errors.email?.message}</Text>
+      <Text className="!text-red-700 min-h-[20px] mb-1">{errors.email?.message}</Text>
 
       <Text className="font-ls-medium text-xl mb-3">Password</Text>
       <View className="w-full">
@@ -121,7 +121,7 @@ const Login = () => {
           )}
           name="password"
         />
-        <Text className="text-red-700 min-h-[20px] mb-1">{errors.password?.message}</Text>
+        <Text className="!text-red-700 min-h-[20px] mb-1">{errors.password?.message}</Text>
       </View>
       <Text className="font-ls-medium text-[12px] text-right mb-12" colorName="primary">
         Forget Password
@@ -131,7 +131,7 @@ const Login = () => {
         onPress={handleSubmit(onSignInPress)}
         className="w-[207px] p-3 rounded-full self-center justify-center items-center mb-3 active:opacity-80"
         colorName="primary">
-        <Text className="text-white font-ls-medium text-2xl leading-6">Log In</Text>
+        <Text className="!text-white font-ls-medium text-2xl leading-6">Log In</Text>
       </Button>
 
       <Text className="font-ls-light text-[12px] text-center mb-3">or sign up with</Text>

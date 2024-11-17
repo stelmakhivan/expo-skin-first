@@ -11,20 +11,21 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { Slot, useNavigationContainerRef } from 'expo-router';
 import Head from 'expo-router/head';
 import * as SplashScreen from 'expo-splash-screen';
-import { NativeWindStyleSheet, useColorScheme } from 'nativewind';
+import { useColorScheme } from 'nativewind';
 import { useEffect } from 'react';
 import { AuthProvider, useAuth, tokenCache } from '@/services';
 import { GestureHandlerView } from '@/components';
 
 import '../../global.css';
+import { Platform } from 'react-native';
 
 export { ErrorBoundary } from 'expo-router';
 
-SplashScreen.preventAutoHideAsync();
+export const unstable_settings = {
+  initialRouteName: '(auth)',
+};
 
-NativeWindStyleSheet.setOutput({
-  default: 'native',
-});
+SplashScreen.preventAutoHideAsync();
 
 const AUTH_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_AUTH_PUBLISHABLE_KEY;
 
@@ -41,22 +42,6 @@ export default function RootLayout() {
 
   useReactNavigationDevTools(navigationRef);
 
-  const [loaded, error] = useFonts(FONTS_MAP);
-
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
   return (
     <AuthProvider publishableKey={AUTH_PUBLISHABLE_KEY!} tokenCache={tokenCache}>
       <RootLayoutNav />
@@ -65,18 +50,32 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const { isLoaded } = useAuth();
+  const { isLoaded: isAuthLoaded } = useAuth();
   const { colorScheme } = useColorScheme();
 
-  if (!isLoaded) {
+  const [isFontsLoaded, error] = useFonts(FONTS_MAP);
+
+  useEffect(() => {
+    if (error) throw error;
+  }, [error]);
+
+  useEffect(() => {
+    if (isAuthLoaded && isFontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [isAuthLoaded, isFontsLoaded]);
+
+  if (!(isAuthLoaded && isFontsLoaded)) {
     return null;
   }
 
   return (
     <GestureHandlerView>
-      <Head>
-        <title>Skin First Dermatology Center</title>
-      </Head>
+      {Platform.OS === 'web' && (
+        <Head>
+          <title>Skin First Dermatology Center</title>
+        </Head>
+      )}
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Slot />
       </ThemeProvider>

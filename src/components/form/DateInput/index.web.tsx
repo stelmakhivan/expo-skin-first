@@ -1,5 +1,5 @@
 import { ComponentProps, forwardRef, useMemo } from 'react';
-import { CursorValue, ViewStyle } from 'react-native';
+import { CursorValue, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
 
@@ -30,21 +30,21 @@ const DateInput = forwardRef<DatePicker, DateInputProps>(
     const textInputBackgroundColor = useThemeColor({}, 'textInputBackground');
     const textInputColor = useThemeColor({}, 'textInputColor');
 
-    const textInputStyle = useMemo(() => {
+    const textInputStyle = useMemo<StyleProp<TextStyle> | StyleProp<TextStyle>[]>(() => {
       return style
-        ? [
+        ? ([
             {
               backgroundColor: textInputBackgroundColor,
               color: textInputColor,
               cursor: 'pointer' as CursorValue,
             },
             style,
-          ]
-        : {
+          ] as StyleProp<TextStyle>[])
+        : ({
             backgroundColor: textInputBackgroundColor,
             color: textInputColor,
             cursor: 'pointer' as CursorValue,
-          };
+          } as StyleProp<TextStyle>);
     }, [style, textInputBackgroundColor, textInputColor]);
 
     const handleChange: ComponentProps<typeof DatePicker>['onChange'] = (date) => {

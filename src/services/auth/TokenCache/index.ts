@@ -4,6 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 export interface TokenCache {
   getToken: NonNullable<ClerkProviderProps['tokenCache']>['getToken'];
   saveToken: NonNullable<ClerkProviderProps['tokenCache']>['saveToken'];
+  clearToken?: NonNullable<ClerkProviderProps['tokenCache']>['clearToken'];
 }
 
 class AuthTokenCache implements TokenCache {

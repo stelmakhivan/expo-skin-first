@@ -1,7 +1,7 @@
 import { useAuth } from '@/services';
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';
 import { Redirect, Stack } from 'expo-router';
-import { useMemo } from 'react';
+import { ComponentProps, useMemo } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 
@@ -12,6 +12,10 @@ if (Platform.OS === 'web') {
   WebBrowser.maybeCompleteAuthSession();
 }
 
+const IntroHeader = (props: NativeStackHeaderProps) => (
+  <AuthHeader {...props} headerTitle="" headerShown={false} />
+);
+
 const LoginHeader = (props: NativeStackHeaderProps) => (
   <AuthHeader {...props} headerTitle="Log In" />
 );
@@ -19,6 +23,18 @@ const LoginHeader = (props: NativeStackHeaderProps) => (
 const SignUpHeader = (props: NativeStackHeaderProps) => (
   <AuthHeader {...props} headerTitle="New Account" />
 );
+
+const introScreenOptions = {
+  header: IntroHeader,
+};
+
+const loginScreenOptions = {
+  header: LoginHeader,
+};
+
+const signupScreenOptions = {
+  header: SignUpHeader,
+};
 
 const AuthLayout = () => {
   useWarmUpBrowser();
@@ -28,7 +44,7 @@ const AuthLayout = () => {
   const backgroundColor = useThemeColor({}, 'background');
   const primaryColor = useThemeColor({}, 'primary');
 
-  const screenOptions = useMemo(
+  const screenOptions: ComponentProps<typeof Stack>['screenOptions'] = useMemo(
     () => ({
       contentStyle: { backgroundColor },
       headerTitleStyle: [styles.stackTitle, { color: primaryColor }],
@@ -38,24 +54,14 @@ const AuthLayout = () => {
   );
 
   if (isSignedIn) {
-    return <Redirect href={'/(home)'} />;
+    return <Redirect href={'/(home)/(tabs)'} />;
   }
 
   return (
     <Stack screenOptions={screenOptions}>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="login"
-        options={{
-          header: LoginHeader,
-        }}
-      />
-      <Stack.Screen
-        name="sign-up"
-        options={{
-          header: SignUpHeader,
-        }}
-      />
+      <Stack.Screen name="index" options={introScreenOptions} />
+      <Stack.Screen name="login" options={loginScreenOptions} />
+      <Stack.Screen name="sign-up" options={signupScreenOptions} />
     </Stack>
   );
 };

@@ -9,6 +9,7 @@ import { useThemeColor } from '@/hooks';
 
 interface AuthHeaderProps extends NativeStackHeaderProps {
   headerTitle: string;
+  headerShown?: boolean;
 }
 
 const AuthHeader: FC<AuthHeaderProps> = (props) => {
@@ -18,19 +19,23 @@ const AuthHeader: FC<AuthHeaderProps> = (props) => {
 
   const canGoBack = router.canGoBack();
 
+  const isVisibleHeader = props.headerShown ?? true;
+
   return (
     <>
       <StatusBar />
-      <View className="flex-row items-center justify-center py-8 px-8">
-        {canGoBack ? (
-          <Pressable onPress={router.back} style={styles.backIcon}>
-            <Ionicons color={primaryColor} name="chevron-back" size={28} />
-          </Pressable>
-        ) : (
-          <View style={styles.backIcon} />
-        )}
-        <Text style={props.options.headerTitleStyle}>{props.headerTitle}</Text>
-      </View>
+      {isVisibleHeader && (
+        <View className="flex-row items-center justify-center py-8 px-8">
+          {canGoBack ? (
+            <Pressable onPress={router.back} style={styles.backIcon}>
+              <Ionicons color={primaryColor} name="chevron-back" size={28} />
+            </Pressable>
+          ) : (
+            <View style={styles.backIcon} />
+          )}
+          <Text style={props.options.headerTitleStyle}>{props.headerTitle}</Text>
+        </View>
+      )}
     </>
   );
 };

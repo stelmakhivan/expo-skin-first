@@ -1,6 +1,4 @@
 import { useColorScheme } from 'nativewind';
-import { useEffect } from 'react';
-import { useColorScheme as useNativeColorScheme } from 'react-native';
 
 import Colors, { ColorPalette } from '@/constants/Colors';
 
@@ -8,14 +6,9 @@ export function useThemeColor(
   props: { light?: string; dark?: string },
   colorName: keyof ColorPalette,
 ) {
-  const { colorScheme, setColorScheme } = useColorScheme();
-  const nativeColorScheme = useNativeColorScheme() ?? 'light';
+  const { colorScheme = 'light' } = useColorScheme();
 
   const colorFromProps = props[colorScheme];
-
-  useEffect(() => {
-    setColorScheme(nativeColorScheme);
-  }, [nativeColorScheme, setColorScheme]);
 
   if (colorFromProps) {
     return colorFromProps;

@@ -12,6 +12,14 @@ const config: ExpoConfig = {
       },
     ],
     'expo-font',
+    [
+      'expo-splash-screen',
+      {
+        image: './assets/images/splash-icon.png',
+        backgroundColor: Colors.light.primary,
+        imageWidth: 256,
+      },
+    ],
     './plugins/custom-android-styles.ts',
   ],
   scheme: 'skin-first',
@@ -21,37 +29,9 @@ const config: ExpoConfig = {
   orientation: 'portrait',
   icon: './assets/images/icon.png',
   userInterfaceStyle: 'automatic',
-  splash: {
-    image: './assets/images/splash.png',
-    resizeMode: 'contain',
-    backgroundColor: Colors.light.primary,
-  },
   ios: {
     supportsTablet: true,
     bundleIdentifier: 'com.stelmakhivan.skinfirst',
-    privacyManifests: {
-      NSPrivacyAccessedAPITypes: [
-        {
-          NSPrivacyAccessedAPIType: 'NSPrivacyAccessedAPICategoryFileTimestamp',
-          NSPrivacyAccessedAPITypeReasons: ['C617.1'],
-        },
-        {
-          NSPrivacyAccessedAPIType: 'NSPrivacyAccessedAPICategorySystemBootTime',
-          NSPrivacyAccessedAPITypeReasons: ['35F9.1'],
-        },
-        {
-          NSPrivacyAccessedAPIType: 'NSPrivacyAccessedAPICategoryDiskSpace',
-          NSPrivacyAccessedAPITypeReasons: ['E174.1'],
-        },
-        {
-          NSPrivacyAccessedAPIType: 'NSPrivacyAccessedAPICategoryUserDefaults',
-          NSPrivacyAccessedAPITypeReasons: ['CA92.1'],
-        },
-      ],
-    },
-    config: {
-      usesNonExemptEncryption: false,
-    },
   },
   android: {
     adaptiveIcon: {
@@ -69,6 +49,9 @@ const config: ExpoConfig = {
     typedRoutes: true,
   },
   extra: {
+    router: {
+      origin: false,
+    },
     eas: {
       projectId: 'ec48248d-130e-4508-8556-db27b9d559fd',
     },

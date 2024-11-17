@@ -14,7 +14,7 @@ const Home = () => {
         onPress={handleSignOut}
         className="w-[207px] p-3 rounded-full self-center justify-center items-center active:opacity-80"
         colorName="primary">
-        <Text className="text-white font-ls-medium text-2xl leading-6">Sign Out</Text>
+        <Text className="!text-white font-ls-medium text-2xl leading-6">Sign Out</Text>
       </Button>
     </View>
   );

@@ -2,9 +2,10 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import { FC, PropsWithChildren } from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, ScrollViewProps } from 'react-native';
 
-interface Props extends ScrollViewProps {}
-
-const KeyboardAvoidingScrollView: FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
+const KeyboardAvoidingScrollView: FC<PropsWithChildren<ScrollViewProps>> = ({
+  children,
+  ...props
+}) => {
   const headerHeight = useHeaderHeight();
 
   return (

@@ -160,7 +160,7 @@ const SignUp = () => {
             )}
             name="fullName"
           />
-          <Text className="text-red-700 min-h-[20px] mb-1">{errors.fullName?.message}</Text>
+          <Text className="!text-red-700 min-h-[20px] mb-1">{errors.fullName?.message}</Text>
 
           <Text className="font-ls-medium text-xl mb-2">Password</Text>
           <View className="w-full">
@@ -187,7 +187,7 @@ const SignUp = () => {
               )}
               name="password"
             />
-            <Text className="text-red-700 min-h-[20px] mb-1">{errors.password?.message}</Text>
+            <Text className="!text-red-700 min-h-[20px] mb-1">{errors.password?.message}</Text>
           </View>
 
           <Text className="font-ls-medium text-xl mb-2">Confirm Password</Text>
@@ -215,7 +215,7 @@ const SignUp = () => {
               )}
               name="confirmPassword"
             />
-            <Text className="text-red-700 min-h-[20px] mb-1">
+            <Text className="!text-red-700 min-h-[20px] mb-1">
               {errors.confirmPassword?.message}
             </Text>
           </View>
@@ -235,7 +235,7 @@ const SignUp = () => {
             )}
             name="email"
           />
-          <Text className="text-red-700 min-h-[20px] mb-1">{errors.email?.message}</Text>
+          <Text className="!text-red-700 min-h-[20px] mb-1">{errors.email?.message}</Text>
 
           <Text className="font-ls-medium text-xl mb-2">Mobile Number</Text>
           <Controller
@@ -252,7 +252,7 @@ const SignUp = () => {
             )}
             name="phone"
           />
-          <Text className="text-red-700 min-h-[20px] mb-1">{errors.phone?.message}</Text>
+          <Text className="!text-red-700 min-h-[20px] mb-1">{errors.phone?.message}</Text>
 
           <Text className="font-ls-medium text-xl mb-2">Date of birth</Text>
           <Controller
@@ -262,7 +262,7 @@ const SignUp = () => {
             )}
             name="dateOfBirth"
           />
-          <Text className="text-red-700 min-h-[20px] mb-8">{errors.dateOfBirth?.message}</Text>
+          <Text className="!text-red-700 min-h-[20px] mb-8">{errors.dateOfBirth?.message}</Text>
 
           <Text className="text-center font-ls-light text-[12px] mb-3">
             By continuing, you agree to{'\n'}
@@ -279,7 +279,7 @@ const SignUp = () => {
             onPress={handleSubmit(onSignUpPress)}
             className="w-[207px] p-3 rounded-full self-center justify-center items-center mb-3 active:opacity-80"
             colorName="primary">
-            <Text className="text-white font-ls-medium text-2xl leading-6">Sign Up</Text>
+            <Text className="!text-white font-ls-medium text-2xl leading-6">Sign Up</Text>
           </Button>
 
           <Text className="font-ls-light text-[12px] text-center mb-3">or sign up with</Text>

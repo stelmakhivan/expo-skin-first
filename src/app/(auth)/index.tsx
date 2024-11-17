@@ -1,10 +1,9 @@
-import { Image } from 'expo-image';
 import { Link } from 'expo-router';
 import { useMemo } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Text, Button, View } from '@/components/Themed';
+import { Text, Button, View, Image } from '@/components';
 import Images from '@/constants/Images';
 
 const Register = () => {
@@ -33,7 +32,7 @@ const Register = () => {
             <Button
               className="w-[207px] p-3 rounded-full self-center justify-center items-center mb-4 active:opacity-80"
               colorName="primary">
-              <Text className="text-white font-ls-medium text-2xl leading-6">Log In</Text>
+              <Text className="!text-white font-ls-medium text-2xl leading-6">Log In</Text>
             </Button>
           </Link>
           <Link href="/sign-up" asChild>
