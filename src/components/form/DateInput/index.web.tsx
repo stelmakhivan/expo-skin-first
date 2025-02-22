@@ -1,6 +1,6 @@
-import { ComponentProps, forwardRef, useMemo } from 'react';
+import { forwardRef, useMemo, MouseEvent, KeyboardEvent } from 'react';
 import { CursorValue, StyleProp, TextStyle, ViewStyle } from 'react-native';
-import DatePicker from 'react-datepicker';
+import DatePicker, { DatePickerProps } from 'react-datepicker';
 import { format } from 'date-fns';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -9,12 +9,12 @@ import { TextInputMask } from '../TextInputMask';
 
 import { useThemeColor } from '@/hooks';
 
-interface DateInputProps extends Omit<DatePicker, 'onChange'> {
+type DateInputProps = {
   date?: Date;
   onChange?: (date: Date) => void;
   inputClassName?: string;
   style?: ViewStyle;
-}
+} & DatePickerProps;
 
 const DateInput = forwardRef<DatePicker, DateInputProps>(
   (
@@ -47,7 +47,10 @@ const DateInput = forwardRef<DatePicker, DateInputProps>(
           } as StyleProp<TextStyle>);
     }, [style, textInputBackgroundColor, textInputColor]);
 
-    const handleChange: ComponentProps<typeof DatePicker>['onChange'] = (date) => {
+    const handleChange = (
+      date: Date | null,
+      _event?: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>,
+    ) => {
       if (date instanceof Date) {
         onChange?.(date);
       }
@@ -66,6 +69,8 @@ const DateInput = forwardRef<DatePicker, DateInputProps>(
         showMonthDropdown
         showYearDropdown
         withPortal
+        selectsRange={undefined}
+        selectsMultiple={undefined}
         customInput={
           <TextInputMask
             keyboardType="numeric"

@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-native';
 import { useSelectAuth, Strategy } from '.';
-import { useOAuth } from '@/services';
+import { useSSO } from '@/services';
 
 jest.mock('expo-router', () => ({
   usePathname: jest.fn(),
@@ -10,7 +10,7 @@ jest.mock('expo-auth-session', () => ({
 }));
 
 jest.mock('@/services', () => ({
-  useOAuth: jest.fn(),
+  useSSO: jest.fn(),
 }));
 
 describe('useSelectAuth', () => {
@@ -19,7 +19,7 @@ describe('useSelectAuth', () => {
   const mockAuth = jest
     .fn()
     .mockResolvedValue({ createdSessionId: 'session-id', setActive: setActiveMock });
-  (useOAuth as jest.Mock).mockReturnValue({ startOAuthFlow: mockAuth });
+  (useSSO as jest.Mock).mockReturnValue({ startSSOFlow: mockAuth });
 
   it('calls the correct auth strategy', async () => {
     const { result } = renderHook(useSelectAuth);
@@ -47,7 +47,7 @@ describe('useSelectAuth', () => {
     const mockAuth = jest
       .fn()
       .mockResolvedValueOnce({ createdSessionId: 'session-id', setActive: setActiveMock });
-    (useOAuth as jest.Mock).mockReturnValue({ startOAuthFlow: mockAuth });
+    (useSSO as jest.Mock).mockReturnValue({ startSSOFlow: mockAuth });
 
     const { result } = renderHook(useSelectAuth);
     await act(() => result.current(Strategy.Facebook));

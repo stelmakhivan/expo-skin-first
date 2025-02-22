@@ -1,4 +1,4 @@
-import { StartOAuthFlowParams, StartOAuthFlowReturnType, useOAuth } from '@/services';
+import { StartSSOFlowParams, StartSSOFlowReturnType, useSSO } from '@/services';
 import { makeRedirectUri } from 'expo-auth-session';
 import { usePathname } from 'expo-router';
 import { useCallback } from 'react';
@@ -15,27 +15,19 @@ export const useSelectAuth = () => {
     path: currentRoute,
   });
 
-  const { startOAuthFlow: googleAuth } = useOAuth({
-    strategy: 'oauth_google',
-    redirectUrl: redirectUri,
-  });
-  const { startOAuthFlow: appleAuth } = useOAuth({
-    strategy: 'oauth_apple',
-    redirectUrl: redirectUri,
-  });
-  const { startOAuthFlow: facebookAuth } = useOAuth({
-    strategy: 'oauth_facebook',
-    redirectUrl: redirectUri,
-  });
+  const { startSSOFlow: googleAuth } = useSSO();
+  const { startSSOFlow: appleAuth } = useSSO();
+  const { startSSOFlow: facebookAuth } = useSSO();
 
   return useCallback(
     async (strategy: Strategy) => {
       const selectedAuth: (
-        startOAuthFlowParams?: StartOAuthFlowParams,
-      ) => Promise<StartOAuthFlowReturnType> = {
-        [Strategy.Google]: googleAuth,
-        [Strategy.Apple]: appleAuth,
-        [Strategy.Facebook]: facebookAuth,
+        startOAuthFlowParams?: StartSSOFlowParams,
+      ) => Promise<StartSSOFlowReturnType> = {
+        [Strategy.Google]: () => googleAuth({ strategy: 'oauth_google', redirectUrl: redirectUri }),
+        [Strategy.Apple]: () => appleAuth({ strategy: 'oauth_apple', redirectUrl: redirectUri }),
+        [Strategy.Facebook]: () =>
+          facebookAuth({ strategy: 'oauth_facebook', redirectUrl: redirectUri }),
       }[strategy];
 
       try {
@@ -48,6 +40,6 @@ export const useSelectAuth = () => {
         console.error('OAuth error', err);
       }
     },
-    [appleAuth, facebookAuth, googleAuth],
+    [appleAuth, facebookAuth, googleAuth, redirectUri],
   );
 };
