@@ -6,7 +6,8 @@
 
 ```shell
 yarn install
-cd ios && pod install && cd ..
+bundle install
+cd ios && bundle exec pod install && cd ..
 yarn ios
 yarn android
 yarn web
@@ -18,22 +19,22 @@ yarn web
 
 ```shell
 System:
-  OS: macOS 15.1
+  OS: macOS 15.2
   CPU: (10) arm64 Apple M1 Max
-  Memory: 5.18 GB / 32.00 GB
+  Memory: 4.43 GB / 32.00 GB
   Shell:
     version: "5.9"
     path: /bin/zsh
 Binaries:
   Node:
-    version: 20.10.0
-    path: ~/.nvm/versions/node/v20.10.0/bin/node
+    version: 22.14.0
+    path: ~/.nvm/versions/node/v22.14.0/bin/node
   Yarn:
     version: 1.22.19
-    path: ~/.nvm/versions/node/v20.10.0/bin/yarn
+    path: ~/.nvm/versions/node/v22.14.0/bin/yarn
   npm:
-    version: 10.2.3
-    path: ~/.nvm/versions/node/v20.10.0/bin/npm
+    version: 10.9.2
+    path: ~/.nvm/versions/node/v22.14.0/bin/npm
   Watchman:
     version: 2023.10.23.00
     path: /opt/homebrew/bin/watchman
@@ -44,17 +45,17 @@ Managers:
 SDKs:
   iOS SDK:
     Platforms:
-      - DriverKit 24.1
-      - iOS 18.1
-      - macOS 15.1
-      - tvOS 18.1
-      - visionOS 2.1
-      - watchOS 11.1
+      - DriverKit 24.2
+      - iOS 18.2
+      - macOS 15.2
+      - tvOS 18.2
+      - visionOS 2.2
+      - watchOS 11.2
   Android SDK: Not Found
 IDEs:
-  Android Studio: 2024.2 AI-242.23339.11.2421.12550806
+  Android Studio: 2024.2 AI-242.23726.103.2422.13016713
   Xcode:
-    version: 16.1/16B40
+    version: 16.2/16C5032a
     path: /usr/bin/xcodebuild
 Languages:
   Java:
@@ -71,8 +72,8 @@ npmPackages:
     installed: 18.3.1
     wanted: 18.3.1
   react-native:
-    installed: 0.76.2
-    wanted: 0.76.2
+    installed: 0.76.7
+    wanted: 0.76.7
   react-native-macos: Not Found
 npmGlobalPackages:
   "*react-native*": Not Found
