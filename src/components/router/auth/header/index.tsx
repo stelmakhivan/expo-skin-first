@@ -4,12 +4,14 @@ import { useRouter } from 'expo-router';
 import { FC } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 
-import { StatusBar, Text, View } from '@/components/Themed';
+import { StatusBar, Text, View, type StatusBarProps } from '@/components/Themed';
 import { useThemeColor } from '@/hooks';
 
 interface AuthHeaderProps extends NativeStackHeaderProps {
   headerTitle: string;
   headerShown?: boolean;
+  lightColor?: StatusBarProps['lightColor'];
+  darkColor?: StatusBarProps['darkColor'];
 }
 
 const AuthHeader: FC<AuthHeaderProps> = (props) => {
@@ -23,7 +25,7 @@ const AuthHeader: FC<AuthHeaderProps> = (props) => {
 
   return (
     <>
-      <StatusBar />
+      <StatusBar lightColor={props.lightColor} darkColor={props.darkColor} />
       {isVisibleHeader && (
         <View className="flex-row items-center justify-center py-8 px-8">
           {canGoBack ? (

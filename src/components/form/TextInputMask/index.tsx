@@ -1,10 +1,10 @@
 import { forwardRef, useMemo } from 'react';
 import { TextInput as NativeTextInput } from 'react-native';
-import NativeTextInputMask, { TextInputMaskProps } from 'react-native-text-input-mask';
+import { MaskedTextInput, MaskedTextInputProps } from 'react-native-advanced-input-mask';
 
 import { useThemeColor } from '@/hooks';
 
-const TextInputMask = forwardRef<NativeTextInput & typeof NativeTextInputMask, TextInputMaskProps>(
+const TextInputMask = forwardRef<NativeTextInput & typeof MaskedTextInput, MaskedTextInputProps>(
   ({ style, ...props }, ref) => {
     const primaryColor = useThemeColor({}, 'primary');
 
@@ -27,7 +27,7 @@ const TextInputMask = forwardRef<NativeTextInput & typeof NativeTextInputMask, T
     }, [style, textInputBackgroundColor, textInputColor]);
 
     return (
-      <NativeTextInputMask
+      <MaskedTextInput
         {...props}
         ref={ref}
         cursorColor={primaryColor}

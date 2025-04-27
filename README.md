@@ -19,9 +19,9 @@ yarn web
 
 ```shell
 System:
-  OS: macOS 15.2
+  OS: macOS 15.4.1
   CPU: (10) arm64 Apple M1 Max
-  Memory: 4.43 GB / 32.00 GB
+  Memory: 129.22 MB / 32.00 GB
   Shell:
     version: "5.9"
     path: /bin/zsh
@@ -45,17 +45,17 @@ Managers:
 SDKs:
   iOS SDK:
     Platforms:
-      - DriverKit 24.2
-      - iOS 18.2
-      - macOS 15.2
-      - tvOS 18.2
-      - visionOS 2.2
-      - watchOS 11.2
+      - DriverKit 24.4
+      - iOS 18.4
+      - macOS 15.4
+      - tvOS 18.4
+      - visionOS 2.4
+      - watchOS 11.4
   Android SDK: Not Found
 IDEs:
-  Android Studio: 2024.2 AI-242.23726.103.2422.13016713
+  Android Studio: 2024.3 AI-243.24978.46.2431.13363775
   Xcode:
-    version: 16.2/16C5032a
+    version: 16.3/16E140
     path: /usr/bin/xcodebuild
 Languages:
   Java:
@@ -66,26 +66,21 @@ Languages:
     path: /Users/ivanstelmakh/.rvm/rubies/ruby-3.2.2/bin/ruby
 npmPackages:
   "@react-native-community/cli":
-    installed: 15.1.2
+    installed: 18.0.0
     wanted: latest
   react:
-    installed: 18.3.1
-    wanted: 18.3.1
+    installed: 19.0.0
+    wanted: 19.0.0
   react-native:
-    installed: 0.76.7
-    wanted: 0.76.7
+    installed: 0.79.1
+    wanted: 0.79.1
   react-native-macos: Not Found
 npmGlobalPackages:
   "*react-native*": Not Found
 Android:
   hermesEnabled: true
-  newArchEnabled: false
+  newArchEnabled: true
 iOS:
   hermesEnabled: true
-  newArchEnabled: false
+  newArchEnabled: true
 ```
-
-### NOTES
-
-- New Architecture is disabled because of the issue with the `react-native-text-input-mask` library.
-  It's not compatible with the new architecture yet.

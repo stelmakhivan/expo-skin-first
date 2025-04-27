@@ -7,14 +7,19 @@ import {
   LeagueSpartan_500Medium,
   LeagueSpartan_600SemiBold,
 } from '@expo-google-fonts/league-spartan';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainerRef,
+  ThemeProvider,
+} from '@react-navigation/native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Slot, useNavigationContainerRef } from 'expo-router';
 import Head from 'expo-router/head';
 import * as SplashScreen from 'expo-splash-screen';
 import { useColorScheme } from 'nativewind';
-import { useEffect } from 'react';
+import { RefObject, useEffect } from 'react';
 import { AuthProvider, useAuth, tokenCache } from '@/services';
-import { GestureHandlerView } from '@/components';
 
 import '../../global.css';
 import { Platform } from 'react-native';
@@ -40,7 +45,7 @@ const FONTS_MAP = {
 export default function RootLayout() {
   const navigationRef = useNavigationContainerRef();
 
-  useReactNavigationDevTools(navigationRef);
+  useReactNavigationDevTools(navigationRef as unknown as RefObject<NavigationContainerRef<any>>);
 
   return (
     <AuthProvider publishableKey={AUTH_PUBLISHABLE_KEY!} tokenCache={tokenCache}>
@@ -70,7 +75,7 @@ function RootLayoutNav() {
   }
 
   return (
-    <GestureHandlerView>
+    <GestureHandlerRootView>
       {Platform.OS === 'web' && (
         <Head>
           <title>Skin First Dermatology Center</title>
@@ -79,6 +84,6 @@ function RootLayoutNav() {
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Slot />
       </ThemeProvider>
-    </GestureHandlerView>
+    </GestureHandlerRootView>
   );
 }

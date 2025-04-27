@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Alert, Platform, Pressable, StyleSheet } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
-import zod from 'zod';
+import * as zod from 'zod';
 
 import { TextInput, Button, Text, View, KeyboardAvoidingScrollView } from '@/components';
 import { Strategy, useSelectAuth, useThemeColor } from '@/hooks';
@@ -169,7 +169,7 @@ const Login = () => {
         />
       </View>
       <Text className="text-center font-ls-light text-[12px] mb-12">
-        Don't have an account?{' '}
+        Don&apos;t have an account?{' '}
         <Link href="/sign-up">
           <Text className="font-ls-medium" colorName="primary">
             Sign Up

@@ -1,14 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { useMemo } from 'react';
+import { useMemo, FC } from 'react';
 import { Platform, StatusBar as NativeStatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { View } from '../View';
 
 import { useThemeColor } from '@/hooks';
+import { ColorPalette } from '@/constants/Colors';
 
-const StyledStatusBar = () => {
-  const statusBarColor = useThemeColor({}, 'statusBar');
+export type StatusBarProps = {
+  lightColor?: string;
+  darkColor?: string;
+  colorName?: keyof ColorPalette;
+};
+
+const StyledStatusBar: FC<StatusBarProps> = (props) => {
+  const { lightColor, darkColor } = props;
+  const statusBarColor = useThemeColor({ light: lightColor, dark: darkColor }, 'statusBar');
   const { top } = useSafeAreaInsets();
 
   const statusBarStyle = useMemo(
@@ -21,9 +29,10 @@ const StyledStatusBar = () => {
     }),
     [top, statusBarColor],
   );
+
   return (
     <>
-      <StatusBar style="auto" backgroundColor={statusBarColor} />
+      <StatusBar style="auto" />
       <View style={statusBarStyle} />
     </>
   );

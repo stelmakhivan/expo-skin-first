@@ -1,6 +1,4 @@
 import 'react-native-gesture-handler/jestSetup';
 
-import '@testing-library/react-native/extend-expect';
-import '@testing-library/jest-native/';
-
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 require('react-native-reanimated').setUpTests();

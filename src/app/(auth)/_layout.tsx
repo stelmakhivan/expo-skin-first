@@ -7,13 +7,20 @@ import * as WebBrowser from 'expo-web-browser';
 
 import { AuthHeader } from '@/components';
 import { useThemeColor, useWarmUpBrowser } from '@/hooks';
+import Colors from '@/constants/Colors';
 
 if (Platform.OS === 'web') {
   WebBrowser.maybeCompleteAuthSession();
 }
 
 const IntroHeader = (props: NativeStackHeaderProps) => (
-  <AuthHeader {...props} headerTitle="" headerShown={false} />
+  <AuthHeader
+    {...props}
+    headerTitle=""
+    headerShown={false}
+    lightColor={Colors.light.background}
+    darkColor={Colors.dark.background}
+  />
 );
 
 const LoginHeader = (props: NativeStackHeaderProps) => (

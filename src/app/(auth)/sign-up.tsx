@@ -6,7 +6,7 @@ import { Alert, Platform, Pressable, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Controller, useForm } from 'react-hook-form';
 import Spinner from 'react-native-loading-spinner-overlay';
-import zod from 'zod';
+import * as zod from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { PASSWORD_REGEXP, PHONE_REGEXP } from '@/constants/RegExp';

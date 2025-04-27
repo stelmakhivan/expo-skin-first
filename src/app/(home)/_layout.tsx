@@ -6,6 +6,8 @@ import { StyleSheet } from 'react-native';
 import { StatusBar } from '@/components';
 import { useThemeColor } from '@/hooks';
 
+const header = () => <StatusBar />;
+
 const HomeLayout = () => {
   const { isSignedIn } = useAuth();
 
@@ -17,7 +19,7 @@ const HomeLayout = () => {
       contentStyle: { backgroundColor },
       headerTitleStyle: [styles.stackTitle, { color: primaryColor }],
       headerShadowVisible: false,
-      header: StatusBar,
+      header,
     }),
     [primaryColor, backgroundColor],
   );
