@@ -72,8 +72,8 @@ npmPackages:
     installed: 19.0.0
     wanted: 19.0.0
   react-native:
-    installed: 0.79.1
-    wanted: 0.79.1
+    installed: 0.79.2
+    wanted: 0.79.2
   react-native-macos: Not Found
 npmGlobalPackages:
   "*react-native*": Not Found
